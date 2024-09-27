@@ -4,4 +4,19 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 ## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+-   [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+
+APP.VUE
+----APP.HEADER
+
+<main>
+----ROUTER-VIEW
+    ----SEZIONA.RICERCA.CATEGORIE.RISTORANTI (/)
+        ----CATEGORIES
+        ----RESTAURANTSLIST (ROUTERLINK)
+    ----SINGLERESTAURANT (/SINGLERESTAURANT-SLUG)
+        ----JUMBO.RISTORANTE
+        ----MENU
+    ----CARRELLO/CHECKOUT (/CHECKOUT)
+</main>
+----APP.FOOTER
