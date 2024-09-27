@@ -1,9 +1,9 @@
 <script>
 export default {
 
-    name:'',
+    name: 'NotFound',
 
-    components:{
+    components: {
 
     },
 
@@ -12,11 +12,11 @@ export default {
 
         };
     },
-    methods:{
+    methods: {
 
     },
 
-    mounted(){
+    mounted() {
 
     },
 };

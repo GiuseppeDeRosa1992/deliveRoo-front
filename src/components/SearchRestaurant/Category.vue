@@ -1,7 +1,7 @@
 <script>
 export default {
 
-    name: 'HeaderApp',
+    name: 'Category',
 
     components: {
 
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-    <h1>ciao sono headerapp</h1>
+    <h1>ciao sono category</h1>
 
 </template>
 

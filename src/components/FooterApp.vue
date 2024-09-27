@@ -1,9 +1,9 @@
 <script>
 export default {
 
-    name:'',
+    name: 'FooterApp',
 
-    components:{
+    components: {
 
     },
 
@@ -12,18 +12,18 @@ export default {
 
         };
     },
-    methods:{
+    methods: {
 
     },
 
-    mounted(){
+    mounted() {
 
     },
 };
 </script>
 
 <template>
-
+    <h1>ciaosonofooter</h1>
 </template>
 
 <style scoped></style>

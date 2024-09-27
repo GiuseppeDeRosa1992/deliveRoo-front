@@ -1,7 +1,7 @@
 <script>
 export default {
 
-    name: 'HeaderApp',
+    name: 'RestaurantList',
 
     components: {
 
@@ -23,8 +23,7 @@ export default {
 </script>
 
 <template>
-    <h1>ciao sono headerapp</h1>
-
+    <h1>ciao sono lista ristoranti</h1>
 </template>
 
 <style scoped></style>
