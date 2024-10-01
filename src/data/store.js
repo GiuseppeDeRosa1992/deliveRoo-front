@@ -1,5 +1,10 @@
 import { reactive } from "vue";
 
-const myData = reactive({});
+const myData = reactive({
+	baseUrlApi: "http://localhost:8000/api/",
+	// category.vue
+	categoriesAll: null,
+	categoriesSelected: [],
+});
 
 export default myData;
