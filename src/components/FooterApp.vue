@@ -28,13 +28,13 @@ export default {
             <div class="container p-0 py-5">
                 <div class="row m-0 align-items-center">
                     <!-- LOGO -->
-                    <div class="col-12 col-md-4 py-3 px-2">
+                    <div class="col-12 col-md-2 py-3 px-2">
                         <figure class="m-0">
                             <img src="../assets/public/img/Delive8.png" alt="logo-footer" class="img-fluid my-color">
                         </figure>
                     </div>
                     <!-- ICONE SOCIAL -->
-                    <div class="col-12 col-md-4 py-3 px-2">
+                    <div class="col-12 col-md-8 py-3 px-2">
                         <h4 class="m-0 py-2 text-center">
                             Seguici sui nostri social:
                         </h4>
@@ -54,10 +54,10 @@ export default {
                         </div>
                     </div>
                     <!-- LINK -->
-                    <div class="col-12 col-md-4 py-3 px-2">
-                        <h3 class="m-0-py-2 text-center">
+                    <div class="col-12 col-md-2 py-3 px-2">
+                        <h5 class="m-0-py-2 text-center">
                             Sei un Ristoratore?
-                        </h3>
+                        </h5>
 
                         <div class="text-center py-1">
                             <a href="http://127.0.0.1:8000/" target="_blank"
@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .my-color {
-    filter: brightness(1.5);
+    filter: brightness(1.5) drop-shadow(0px 5px 4px black);
 }
 
 .my-bg {
