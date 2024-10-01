@@ -25,7 +25,6 @@ export default {
 
 <template>
     <!-- *******HEADER****** -->
-
     <header>
 
         <section>
@@ -45,6 +44,8 @@ export default {
         </section>
 
     </header>
+    <!-- *******HEADER****** -->
+
 
     <!-- *******JUMBOO****** -->
     <div class="my_jumbotron">
@@ -52,28 +53,28 @@ export default {
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../../assets/public/img/jumboo.jpg" class="d-block " alt="...">
+                        <img src="../assets/public/img/Jumbotron.jpg" class="d-block " alt="...">
                         <div class="carousel-caption d-none d-md-block my_bg ">
                             <h4>Enjoy every moment</h4>
                             <p>Home is not where we live, but wherever we are understood.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="../../assets/public/img/jumboo2.jpg" class="d-block " alt="...">
+                        <img src="../assets/public/img/Pizza-al-metro.webp" class="d-block " alt="...">
                         <div class="carousel-caption d-none d-md-block my_bg ">
                             <h4>Find you're story</h4>
                             <p>Each House is a story that is not identical to any other.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="../../assets/public/img/jumboo3.jpg3" class="d-block " alt="...">
+                        <img src="../assets/public/img/jumboo3.jpg" class="d-block " alt="...">
                         <div class="carousel-caption d-none d-md-block my_bg ">
                             <h4>Feel at Home</h4>
                             <p>Home is that place where, when you go, they always welcome you.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="../../assets/public/img/jumboo4.jpg3" class="d-block " alt="...">
+                        <img src="../assets/public/img/sushi.jpg" class=" d-block " alt="...">
                         <div class="carousel-caption d-none d-md-block my_bg ">
                             <h4>Feel at Home</h4>
                             <p>Home is that place where, when you go, they always welcome you.</p>
@@ -97,6 +98,8 @@ export default {
 </template>
 
 <style scoped>
+/* <!-- *******HEADER****** -->  */
+
 section {
     height: 4.5rem;
     background-color: #facdad;
@@ -127,13 +130,14 @@ section {
 }
 
 .my_jumbotron {
-    height: calc(100vh - 4.5rem);
-    /* overflow: hidden */
+
+    height: 35rem;
+    overflow: hidden
 }
 
 .my_jumbotron img {
     width: 100%;
-    height: 100%;
+    height: 35rem;
     object-fit: cover;
 }
 </style>
