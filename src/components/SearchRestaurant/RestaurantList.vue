@@ -1,4 +1,7 @@
 <script>
+import Store from '../../data/store.js';
+import Service from '../../helpers/service.js';
+
 export default {
 
     name: 'RestaurantList',
@@ -9,7 +12,8 @@ export default {
 
     data() {
         return {
-
+            Service,
+            Store,
         };
     },
     methods: {
@@ -17,13 +21,76 @@ export default {
     },
 
     mounted() {
-
+        this.Service.getRestaurants()
     },
 };
 </script>
 
 <template>
-    <h1>ciao sono lista ristoranti</h1>
+    <div class="container" v-show="Store.listRestaurants">
+        <h3 class="m-0 text-center mb-4">
+            Scegli il tuo ristorante
+        </h3>
+
+        <hr class="my-border-color rounded-3 mb-5">
+
+        <div class="row m-0">
+            <template v-for="restaurant in Store.listRestaurants">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-4 py-5">
+                    <div class="card text-center h-100 my-shadow">
+                        <div class="card-body p-0 px-2 pb-2 d-flex justify-content-between flex-column">
+                            <div class="position-relative">
+                                <img :src="restaurant.image" class="rounded rounded-circle position-absolute mt-4"
+                                    :alt="restaurant.image">
+                                <h4 class="card-title mb-0 pb-1">{{ restaurant.name }}</h4>
+                                <p class="card-text m-0 py-1">{{ restaurant.address }}</p>
+                                <p class="card-text m-0 py-1">{{ restaurant.phone_number }}</p>
+                                <template v-for="category in restaurant.categories">
+                                    <span class="badge my-bg rounded-pill text-dark mx-1">{{ category.name }}</span>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card-body img {
+    top: -5rem;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.card {
+    border: 3px solid #facdad;
+}
+
+img {
+    height: 10rem;
+}
+
+h4 {
+    margin-top: 7rem !important;
+}
+
+.my-bg {
+    background-color: #facdad;
+}
+
+.my-border-color {
+    border-top: orange 10px solid !important;
+}
+
+.my-shadow {
+    transition: all 300ms;
+}
+
+.my-shadow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 7px 14px #facdad;
+    transition: all 300ms;
+}
+</style>

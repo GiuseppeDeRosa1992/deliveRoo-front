@@ -5,6 +5,7 @@ const myData = reactive({
 	// category.vue
 	categoriesAll: null,
 	categoriesSelected: [],
+	listRestaurants: null,
 });
 
 export default myData;

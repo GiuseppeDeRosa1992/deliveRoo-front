@@ -14,9 +14,17 @@ const myHelpers = {
 	},
 	getRestaurantsByCategory() {
 		axios.post(Store.baseUrlApi + "restaurants-by-category", { categories: Store.categoriesSelected }).then((response) => {
-			console.log(response.data);
+			Store.listRestaurants = response.data.restaurants
 		});
 	},
+
+	getRestaurants() {
+		axios.get(Store.baseUrlApi + 'restaurants').then(response => {
+			console.log(response.data.restaurants)
+			Store.listRestaurants = response.data.restaurants
+		})
+	},
+
 };
 
 export default myHelpers;
