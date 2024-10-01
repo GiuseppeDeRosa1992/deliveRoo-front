@@ -1,4 +1,5 @@
 <script>
+import axios from "axios";
 import Store from "../../data/store.js";
 import Function from "../../helpers/function.js";
 export default {
@@ -20,13 +21,13 @@ export default {
 
 <template>
 	<div v-if="Store.categoriesAll" class="container py-3 d-flex flex-wrap gap-3 justify-content-center">
-		<h5 v-if="!Store.categoriesSelected.length > 0" class="w-100 text-center">Cosa vuoi mangiare oggi?</h5>
+		<h3 v-if="!Store.categoriesSelected.length > 0" class="w-100 text-center">Cosa vuoi mangiare oggi?</h3>
 		<template v-for="category in Store.categoriesAll">
 			<div
-				@click="Function.toggleCategory(category)"
+				@click="Function.toggleCategory(category.id)"
 				:class="[
 					'my_category_box',
-					{ selected: Function.isSelected(category), my_grey: Store.categoriesSelected.length > 0 && !Function.isSelected(category) },
+					{ selected: Function.isSelected(category.id), my_grey: Store.categoriesSelected.length > 0 && !Function.isSelected(category.id) },
 				]">
 				<template v-if="category.image.startsWith('http')">
 					<img :src="category.image" :alt="category.name" />

@@ -12,6 +12,11 @@ const myHelpers = {
 				console.error("Errore durante la ricezione delle categorie", error);
 			});
 	},
+	getRestaurantsByCategory() {
+		axios.post(Store.baseUrlApi + "restaurants-by-category", { categories: Store.categoriesSelected }).then((response) => {
+			console.log(response.data);
+		});
+	},
 };
 
 export default myHelpers;
