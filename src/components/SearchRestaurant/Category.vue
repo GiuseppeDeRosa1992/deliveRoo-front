@@ -1,5 +1,6 @@
 <script>
 import Store from "../../data/store.js";
+import Function from "../../helpers/function.js";
 export default {
 	name: "Category",
 
@@ -8,36 +9,24 @@ export default {
 	data() {
 		return {
 			Store,
+			Function,
 		};
 	},
-	methods: {
-		toggleCategory(category) {
-			const index = Store.categoriesSelected.indexOf(category);
-			if (index === -1) {
-				Store.categoriesSelected.push(category);
-				console.log(Store.categoriesSelected);
-			} else {
-				Store.categoriesSelected.splice(index, 1);
-				console.log(Store.categoriesSelected);
-			}
-		},
-		isSelected(category) {
-			return Store.categoriesSelected.includes(category);
-		},
-	},
+	methods: {},
 
 	mounted() {},
 };
 </script>
 
 <template>
-	<div v-if="Store.categoriesAll" class="d-flex flex-wrap gap-3 justify-content-center">
+	<div v-if="Store.categoriesAll" class="container py-3 d-flex flex-wrap gap-3 justify-content-center">
+		<h5 v-if="!Store.categoriesSelected.length > 0" class="w-100 text-center">Cosa vuoi mangiare oggi?</h5>
 		<template v-for="category in Store.categoriesAll">
 			<div
-				@click="toggleCategory(category)"
+				@click="Function.toggleCategory(category)"
 				:class="[
 					'my_category_box',
-					{ selected: isSelected(category), my_grey: Store.categoriesSelected.length > 0 && !isSelected(category) },
+					{ selected: Function.isSelected(category), my_grey: Store.categoriesSelected.length > 0 && !Function.isSelected(category) },
 				]">
 				<template v-if="category.image.startsWith('http')">
 					<img :src="category.image" :alt="category.name" />
