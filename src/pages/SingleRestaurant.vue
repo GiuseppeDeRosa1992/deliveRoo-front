@@ -52,26 +52,83 @@ export default {
     <h3 class="m-0 py-1 text-center">Ecco il nostro Menù</h3>
 
     <div class="container mt-5">
-        <div class="row m-0" v-if="Store.singleRestaurant">
-            <template v-for="product in Store.singleRestaurant.products">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-4 py-5">
-                    <div class="card text-center h-100 my-shadow">
-                        <div class="card-body p-0 px-2 pb-2 d-flex justify-content-between flex-column">
-                            <div class="position-relative">
-                                <img :src="product.image"
-                                    class="rounded rounded-circle position-absolute mt-4 ratio ratio-1*1"
-                                    :alt="product.image">
-                                <h4 class="card-title mb-0 pb-1">{{ product.name }}</h4>
-                                <p class="card-text m-0 py-1">{{ product.description }}</p>
-                                <p class="card-text m-0 py-1">{{ product.price }}</p>
-                                <p class="card-text m-0 py-1">{{ product.type }}</p>
+        <div class="row m-0">
+            <div class="col-12 col-md-9 p-0 px-2">
+                <div class="row m-0" v-if="Store.singleRestaurant">
+                    <template v-for="product in Store.singleRestaurant.products">
+                        <div class="col-12 col-sm-6 col-md-4 px-4 py-5">
+                            <div class="card text-center h-100 my-shadow">
+                                <div class="card-body p-0 px-2 pb-2 position-relative h-100">
+                                    <img :src="product.image"
+                                        class="rounded rounded-circle position-absolute mt-4 ratio ratio-1*1"
+                                        :alt="product.image">
+                                    <div class="d-flex flex-column justify-content-between h-100">
+                                        <div>
+                                            <h4 class="card-title mb-0 pb-1">{{ product.name }}</h4>
+                                            <p class="card-text m-0 py-1">{{ product.description }}</p>
+                                            <p class="card-text m-0 py-1">{{ product.price }}</p>
+                                            <p class="card-text m-0 py-1">{{ product.type }}</p>
+                                        </div>
+                                        <div>
+                                            <button class="btn p-2 my-bg">
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                Aggiungi al Carrello
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </template>
+                </div>
+            </div>
+            <div class="col-12 col-md-3 p-0 px-2">
+                <!-- Card del carrello -->
+                <div class="card cart-card position-sticky top-0 mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title fs-3 mb-3">Carrello</h5>
+
+                        <p class="card-text">Aggiungi piatti al carrello per visualizzare
+                            qui.
+                        </p>
+                        <div class="cart-items mb-0">
+                            <div class="cart-list ps-0">
+
+                                <h3 class="card-title m-0 py-2">Stai ordinando presso:</h3>
+
+                                <div class="d-flex mb-2 cart-list-detail flex-column pb-2">
+                                    <div class="mb-1 d-flex align-items-center justify-content-between">
+                                        <span class="fs-4 cart-name-dish">ciao</span>
+                                        <span class="ps-2 fw-bold">ciao</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between pb-2">
+                                        <div class="quantity-controls ms-0">
+                                            <button class="rounded border-0 text-white btn-quantity ms-0">-</button>
+                                            <span>ciao quantita</span>
+                                            <button class="rounded border-0 text-white btn-quantity">+</button>
+                                        </div>
+                                        <button class="btn btn-danger btn-sm mt-0"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Il carrello è vuoto</p>
+                        </div>
+                        <!-- Totale dei prodotti e del prezzo -->
+                        <div class="cart-totals border-top border-2 border-dark pt-2">
+                            <p class="mb-1">Totale prodotti: </p>
+                            <p>Totale da pagare: </p>
+                        </div>
+                        <button class="btn btn-success">Procedi
+                            all'ordine</button>
                     </div>
                 </div>
-            </template>
+            </div>
         </div>
+
     </div>
+
+
 
 </template>
 
