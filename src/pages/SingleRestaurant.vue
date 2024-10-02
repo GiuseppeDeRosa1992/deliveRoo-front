@@ -51,12 +51,12 @@ export default {
 
     <h3 class="m-0 py-1 text-center">Ecco il nostro Menù</h3>
 
-    <div class="container mt-5">
+    <div class="mt-5">
         <div class="row m-0">
-            <div class="col-12 col-md-9 p-0 px-2">
+            <div class="col-12 col-md-7 col-lg-8 p-0 px-2">
                 <div class="row m-0" v-if="Store.singleRestaurant">
                     <template v-for="product in Store.singleRestaurant.products">
-                        <div class="col-12 col-sm-6 col-md-4 px-4 py-5">
+                        <div class="col-12 col-lg-4 px-0 px-md-3 py-5">
                             <div class="card text-center h-100 my-shadow">
                                 <div class="card-body p-0 px-2 pb-2 position-relative h-100">
                                     <img :src="product.image"
@@ -82,9 +82,9 @@ export default {
                     </template>
                 </div>
             </div>
-            <div class="col-12 col-md-3 p-0 px-2">
+            <div class="col-12 col-md-5 col-lg-4 p-0 px-2">
                 <!-- Card del carrello -->
-                <div class="card cart-card position-sticky top-0 mb-5">
+                <div class="card cart-card my-position mb-5">
                     <div class="card-body">
                         <h5 class="card-title fs-3 mb-3">Carrello</h5>
 
@@ -179,5 +179,11 @@ h4 {
 
 .my-brightness {
     filter: brightness(0.4);
+}
+
+/* CART */
+.my-position {
+    position: sticky;
+    top: 5rem;
 }
 </style>
