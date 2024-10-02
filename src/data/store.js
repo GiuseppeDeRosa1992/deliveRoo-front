@@ -6,6 +6,7 @@ const myData = reactive({
 	categoriesAll: null,
 	categoriesSelected: [],
 	listRestaurants: null,
+	singleRestaurant: null,
 });
 
 export default myData;

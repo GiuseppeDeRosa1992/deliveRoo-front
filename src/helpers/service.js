@@ -25,6 +25,12 @@ const myHelpers = {
 		})
 	},
 
-};
+	getMenuRestaurant(params) {
+		axios.get(`http://localhost:8000/api/restaurant/${params}`).then(response => {
+			Store.singleRestaurant = response.data.restaurant
+			console.log(response.data.restaurant)
+		})
+	},
+}
 
 export default myHelpers;
