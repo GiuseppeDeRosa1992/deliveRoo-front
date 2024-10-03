@@ -10,7 +10,7 @@ export default {
 	},
 	methods: {},
 
-	mounted() {},
+	mounted() { },
 };
 </script>
 
@@ -34,23 +34,23 @@ export default {
 <style scoped>
 header {
 	height: 5rem;
-	background-color: #facdad;
+	background-color: rgba(250, 205, 173, 0.9);
 }
 
-.left-side > a > img {
+.left-side>a>img {
 	filter: brightness(1.5) drop-shadow(0px 5px 4px black);
 	height: 100%;
 	padding: 0.2rem 0;
 }
 
-.right-side > .carrello {
+.right-side>.carrello {
 	height: 2rem;
 	width: 2rem;
 	text-align: center;
 	border-radius: 50%;
 }
 
-.right-side > .carrello:hover {
+.right-side>.carrello:hover {
 	background-color: orange;
 }
 </style>
