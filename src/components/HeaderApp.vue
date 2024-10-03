@@ -35,6 +35,7 @@ export default {
 header {
 	height: 5rem;
 	background-color: rgba(250, 205, 173, 0.9);
+
 }
 
 .left-side>a>img {

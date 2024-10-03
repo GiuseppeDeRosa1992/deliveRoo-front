@@ -44,8 +44,12 @@ export default {
                         <div class="card text-center h-100 my-shadow">
                             <div class="card-body p-0 px-2 pb-2 d-flex justify-content-between flex-column">
                                 <div class="position-relative">
-                                    <img :src="restaurant.image" class="rounded rounded-circle position-absolute mt-4"
-                                        :alt="restaurant.image">
+                                    <img v-if="!restaurant.image.startsWith('http')"
+                                        :src="Store.baseUrl + 'storage/' + restaurant.image"
+                                        class="rounded rounded-circle position-absolute mt-4" alt="...">
+
+                                    <img v-else="" :src="restaurant.image"
+                                        class="rounded rounded-circle position-absolute mt-4" alt="...">
                                     <h4 class="card-title mb-0 pb-1">{{ restaurant.name }}</h4>
                                     <p class="card-text m-0 py-1">{{ restaurant.address }}</p>
                                     <p class="card-text m-0 py-1">{{ restaurant.phone_number }}</p>

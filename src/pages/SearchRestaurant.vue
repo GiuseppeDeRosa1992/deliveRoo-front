@@ -61,11 +61,13 @@ export default {
 						</div>
 					</div>
 				</div>
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide="prev">
 					<span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
 					<span class="visually-hidden">Prossima</span>
 				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+					data-bs-slide="next">
 					<span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
 					<span class="visually-hidden">Precedente</span>
 				</button>
@@ -89,6 +91,7 @@ export default {
 .my_jumbotron {
 	height: 40rem;
 	overflow: hidden;
+	padding-top: 5rem;
 }
 
 .my_jumbotron img {

@@ -30,21 +30,24 @@ export default {
 <template>
 
     <!-- JUMBO -->
-    <div class="my-jumbo-bg d-flex align-items-center justify-content-center position-relative"
-        v-if="Store.singleRestaurant">
-        <img src="../assets/public/img/jumboo3.jpg" alt="jumbo"
-            class="position-absolute top-0 left-0 w-100 h-100 z-n1 my-brightness">
-        <div class="container my-bg rounded-3 p-3 row m-0 justify-content-center align-items-center">
-            <div class="col-auto p-0 me-3">
-                <img :src="Store.singleRestaurant.image" :alt="Store.singleRestaurant.image" class="img-fluid rounded">
-            </div>
-            <div class="col-auto p-0">
-                <h1 class="m-0 pb-1 text-white">{{ Store.singleRestaurant.name }}</h1>
-                <p class="m-0 py-1">{{ Store.singleRestaurant.address }}</p>
-                <p class="m-0 py-1">{{ Store.singleRestaurant.phone_number }}</p>
-                <template v-for="category in Store.singleRestaurant.categories">
-                    <span class="badge bg-orange rounded-pill text-dark me-1">{{ category.name }}</span>
-                </template>
+    <div class="my-pt">
+        <div class="my-jumbo-bg d-flex align-items-center justify-content-center position-relative"
+            v-if="Store.singleRestaurant">
+            <img src="../assets/public/img/jumboo3.jpg" alt="jumbo"
+                class="position-absolute top-0 left-0 w-100 h-100 z-n1 my-brightness">
+            <div class="container my-bg rounded-3 p-3 row m-0 justify-content-center align-items-center">
+                <div class="col-auto p-0 me-3">
+                    <img :src="Store.singleRestaurant.image" :alt="Store.singleRestaurant.image"
+                        class="img-fluid rounded">
+                </div>
+                <div class="col-auto p-0">
+                    <h1 class="m-0 pb-1 text-white">{{ Store.singleRestaurant.name }}</h1>
+                    <p class="m-0 py-1">{{ Store.singleRestaurant.address }}</p>
+                    <p class="m-0 py-1">{{ Store.singleRestaurant.phone_number }}</p>
+                    <template v-for="category in Store.singleRestaurant.categories">
+                        <span class="badge bg-orange rounded-pill text-dark me-1">{{ category.name }}</span>
+                    </template>
+                </div>
             </div>
         </div>
     </div>
@@ -59,9 +62,12 @@ export default {
                         <div class="col-12 col-lg-4 px-0 px-md-3 py-5">
                             <div class="card text-center h-100 my-shadow">
                                 <div class="card-body p-0 px-2 pb-2 position-relative h-100">
-                                    <img :src="product.image"
-                                        class="rounded rounded-circle position-absolute mt-4 ratio ratio-1*1"
-                                        :alt="product.image">
+                                    <img v-if="!product.image.startsWith('http')"
+                                        :src="Store.baseUrl + 'storage/' + product.image"
+                                        class="rounded rounded-circle position-absolute mt-4 ratio ratio-1*1" alt="...">
+
+                                    <img v-else="" :src="product.image"
+                                        class="rounded rounded-circle position-absolute mt-4 ratio ratio-1*1" alt="...">
                                     <div class="d-flex flex-column justify-content-between h-100">
                                         <div>
                                             <h4 class="card-title mb-0 pb-1">{{ product.name }}</h4>
@@ -173,8 +179,13 @@ h4 {
 }
 
 /* JUMBO */
+.my-pt {
+    padding-top: 5rem;
+}
+
 .my-jumbo-bg {
-    height: 35rem;
+    height: 40rem;
+
 }
 
 .my-brightness {
