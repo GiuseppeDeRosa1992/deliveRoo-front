@@ -107,13 +107,14 @@ export default {
 
                                 <h3 class="card-title m-0 py-2">Stai ordinando presso: {{
                                     Store.recordCart[0].restaurant.name
-                                    }}</h3>
+                                }}</h3>
 
                                 <div class="d-flex mb-2 cart-list-detail flex-column pb-2"
                                     v-for="product in Store.recordCart[0].products">
                                     <div class="mb-1 d-flex align-items-center justify-content-between">
                                         <span class="fs-4 cart-name-dish">{{ product.name }}</span>
-                                        <span class="ps-2 fw-bold">{{ product.price }}</span>
+                                        <span class="ps-2 fw-bold">{{ Function.totalProductPrice(product.price,
+                                            product.quantity) }}</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between pb-2">
                                         <div class="quantity-controls ms-0">
@@ -130,8 +131,8 @@ export default {
                         </div>
                         <!-- Totale dei prodotti e del prezzo -->
                         <div class="cart-totals border-top border-2 border-dark pt-2">
-                            <p class="mb-1">Totale prodotti: </p>
-                            <p>Totale da pagare: </p>
+                            <p class="mb-1">Totale prodotti: {{ Store.recordCart[0].products.length }} </p>
+                            <p>Totale da pagare: <b>€ {{ Store.recordCart[0].totalPrice }}</b></p>
                         </div>
                         <button class="btn btn-success">Procedi
                             all'ordine</button>

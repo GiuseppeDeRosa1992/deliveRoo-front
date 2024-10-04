@@ -66,9 +66,9 @@ const myFunction = {
 		console.log(Store.recordCart)
 	},
 
-	totalPrice() {
-
-	}
+	totalProductPrice(priceProduct, quantityProduct) {
+		return priceProduct * quantityProduct
+	},
 };
 
 export default myFunction;
