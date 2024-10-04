@@ -1,6 +1,7 @@
 <script>
 import HeaderApp from './components/HeaderApp.vue';
 import FooterApp from './components/FooterApp.vue';
+import Function from './helpers/function.js'
 import { RouterView } from 'vue-router';
 
 
@@ -12,8 +13,12 @@ export default {
 
 	data() {
 		return {
-
+			Function
 		};
+	},
+
+	mounted() {
+		// localStorage.clear()
 	},
 };
 </script>

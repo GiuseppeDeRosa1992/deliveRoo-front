@@ -1,6 +1,7 @@
 <script>
 import Service from '../helpers/service.js';
 import Store from '../data/store.js';
+import Function from '../helpers/function.js';
 
 
 export default {
@@ -14,7 +15,8 @@ export default {
     data() {
         return {
             Service,
-            Store
+            Store,
+            Function,
         };
     },
     methods: {
@@ -22,7 +24,9 @@ export default {
     },
 
     mounted() {
-        Service.getMenuRestaurant(this.$route.params.slug)
+
+        Service.getMenuRestaurant(this.$route.params.slug);
+        console.log(Store.recordCart)
     }
 };
 </script>
@@ -76,7 +80,8 @@ export default {
                                             <p class="card-text m-0 py-1">{{ product.type }}</p>
                                         </div>
                                         <div>
-                                            <button class="btn p-2 my-bg">
+                                            <button class="btn p-2 my-bg"
+                                                @click="Function.addToCart(Store.singleRestaurant, product)">
                                                 <i class="fa-solid fa-cart-shopping"></i>
                                                 Aggiungi al Carrello
                                             </button>
@@ -98,19 +103,22 @@ export default {
                             qui.
                         </p>
                         <div class="cart-items mb-0">
-                            <div class="cart-list ps-0">
+                            <div class="cart-list ps-0" v-if="Store.recordCart.length > 0">
 
-                                <h3 class="card-title m-0 py-2">Stai ordinando presso:</h3>
+                                <h3 class="card-title m-0 py-2">Stai ordinando presso: {{
+                                    Store.recordCart[0].restaurant.name
+                                    }}</h3>
 
-                                <div class="d-flex mb-2 cart-list-detail flex-column pb-2">
+                                <div class="d-flex mb-2 cart-list-detail flex-column pb-2"
+                                    v-for="product in Store.recordCart[0].products">
                                     <div class="mb-1 d-flex align-items-center justify-content-between">
-                                        <span class="fs-4 cart-name-dish">ciao</span>
-                                        <span class="ps-2 fw-bold">ciao</span>
+                                        <span class="fs-4 cart-name-dish">{{ product.name }}</span>
+                                        <span class="ps-2 fw-bold">{{ product.price }}</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between pb-2">
                                         <div class="quantity-controls ms-0">
                                             <button class="rounded border-0 text-white btn-quantity ms-0">-</button>
-                                            <span>ciao quantita</span>
+                                            <span>{{ product.quantity }}</span>
                                             <button class="rounded border-0 text-white btn-quantity">+</button>
                                         </div>
                                         <button class="btn btn-danger btn-sm mt-0"><i

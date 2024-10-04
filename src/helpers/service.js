@@ -20,7 +20,6 @@ const myHelpers = {
 
 	getRestaurants() {
 		axios.get(Store.baseUrlApi + 'restaurants').then(response => {
-			console.log(response.data.restaurants)
 			Store.listRestaurants = response.data.restaurants
 		})
 	},
@@ -28,7 +27,6 @@ const myHelpers = {
 	getMenuRestaurant(params) {
 		axios.get(`http://localhost:8000/api/restaurant/${params}`).then(response => {
 			Store.singleRestaurant = response.data.restaurant
-			console.log(response.data.restaurant)
 		})
 	},
 }
