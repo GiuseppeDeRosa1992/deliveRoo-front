@@ -27,9 +27,9 @@ const myFunction = {
 		if (Store.recordCart.length > 0) {
 			if (Store.recordCart[0].restaurant.id !== restaurant.id) {
 				// Mostra l'avviso solo se c'è già un ristorante nel carrello
-				const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+				const confirmModal = new bootstrap.Modal(document.getElementById("confirmModal"));
 				confirmModal.show();
-				return;  // Blocca l'aggiunta del piatto
+				return; // Blocca l'aggiunta del piatto
 			}
 		}
 
@@ -69,22 +69,32 @@ const myFunction = {
 	incrementQuantity(product) {
 		if (product.quantity < 30) {
 			product.quantity++;
+			Store.recordCart[0].totalPrice += parseFloat(product.price);
+			let cart = JSON.parse(localStorage.getItem("cart"));
+			cart[0].totalPrice += parseFloat(product.price);
+			localStorage.setItem("cart", JSON.stringify(cart));
 		}
 	},
 	decrementQuantity(product, indice) {
 		if (product.quantity === 1) {
 			Store.recordCart[0].products.splice(indice, 1);
+			Store.recordCart[0].totalPrice -= parseFloat(product.price);
 			if (Store.recordCart[0].products.length === 0) {
 				Store.recordCart = [];
 			}
 			let cart = JSON.parse(localStorage.getItem("cart"));
 			cart[0].products.splice(indice, 1);
+			cart[0].totalPrice -= parseFloat(product.price);
 			localStorage.setItem("cart", JSON.stringify(cart));
 			if (cart[0].products.length === 0) {
 				localStorage.clear();
 			}
 		} else {
 			product.quantity--;
+			Store.recordCart[0].totalPrice -= parseFloat(product.price);
+			let cart = JSON.parse(localStorage.getItem("cart"));
+			cart[0].totalPrice -= parseFloat(product.price);
+			localStorage.setItem("cart", JSON.stringify(cart));
 		}
 	},
 	deleteProduct(indice) {
