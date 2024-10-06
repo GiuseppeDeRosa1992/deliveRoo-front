@@ -24,15 +24,14 @@ const myFunction = {
 
 	addToCart(restaurant, product) {
 		// Controlla se l'utente sta cercando di aggiungere piatti da un ristorante diverso
-		// if (restaurantSlugInCart && restaurantSlugInCart !== this.$route.params.restaurant_slug) {
-		// 	if (this.cart.length > 0) {
-		// 		// Mostra l'avviso solo se c'è già un ristorante nel carrello
-		// 		this.pendingRestaurantSlug = this.$route.params.restaurant_slug;
-		// 		const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-		// 		confirmModal.show();
-		// 		return;  // Blocca l'aggiunta del piatto
-		// 	}
-		// }
+		if (Store.recordCart.length > 0) {
+			if (Store.recordCart[0].restaurant.id !== restaurant.id) {
+				// Mostra l'avviso solo se c'è già un ristorante nel carrello
+				const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+				confirmModal.show();
+				return;  // Blocca l'aggiunta del piatto
+			}
+		}
 
 		let productExist = false;
 		if (Store.recordCart.length > 0) {
@@ -60,6 +59,11 @@ const myFunction = {
 			Store.recordCart[0].products[0].quantity = 1;
 		}
 		localStorage.setItem("cart", JSON.stringify(Store.recordCart));
+	},
+
+	deleteCart() {
+		Store.recordCart = [];
+		localStorage.clear();
 	},
 
 	incrementQuantity(product) {
