@@ -19,7 +19,6 @@ export default {
 
 	mounted() {
 		Service.getMenuRestaurant(this.$route.params.slug);
-		console.log(Store.recordCart);
 	},
 };
 </script>
@@ -90,26 +89,38 @@ export default {
 				<!-- Card del carrello -->
 				<div class="card cart-card my-position mb-5">
 					<div class="card-body">
-						<h5 class="card-title fs-3 mb-3">Carrello</h5>
-						<p>Il carrello è vuoto</p>
-						<p class="card-text">Aggiungi piatti al carrello per visualizzare qui.</p>
+						<h5 v-if="!Store.recordCart.length > 0" class="card-title fs-3 mb-3">Carrello</h5>
+						<p v-if="!Store.recordCart.length > 0">Il carrello è vuoto</p>
+						<p v-if="!Store.recordCart.length > 0" class="card-text">Aggiungi piatti al carrello per visualizzare qui.</p>
 						<div v-if="Store.recordCart.length > 0" class="cart-items mb-0">
 							<div class="cart-list ps-0">
 								<h3 class="card-title m-0 py-2">Stai ordinando presso: {{ Store.recordCart[0].restaurant.name }}</h3>
 
-								<div class="d-flex mb-2 cart-list-detail flex-column pb-2" v-for="product in Store.recordCart[0].products">
-									<div class="mb-1 d-flex align-items-center justify-content-between">
-										<span class="fs-4 cart-name-dish">{{ product.name }}</span>
-										<span class="ps-2 fw-bold">{{ Function.totalProductPrice(product.price, product.quantity) }}</span>
-									</div>
-									<div class="d-flex align-items-center justify-content-between pb-2">
-										<div class="quantity-controls ms-0">
-											<button class="rounded border-0 text-white btn-quantity ms-0">-</button>
-											<span>{{ product.quantity }}</span>
-											<button class="rounded border-0 text-white btn-quantity">+</button>
+								<div class="overflow-y-auto d-flex mb-2 cart-list-detail flex-column pb-2 pe-2">
+									<template v-for="(product, i) in Store.recordCart[0].products">
+										<div class="mb-1 d-flex align-items-center justify-content-between">
+											<span class="fs-4 cart-name-dish">{{ product.name }}</span>
+											<span class="ps-2 fw-bold">{{
+												Function.totalProductPrice(product.price, product.quantity).toFixed(2)
+											}}</span>
 										</div>
-										<button class="btn btn-danger btn-sm mt-0"><i class="fa-solid fa-trash"></i></button>
-									</div>
+										<div class="d-flex align-items-center justify-content-between pb-2">
+											<div class="quantity-controls ms-0">
+												<button
+													@click="Function.decrementQuantity(product, i)"
+													class="rounded border-0 text-white btn-quantity ms-0">
+													-
+												</button>
+												<span>{{ product.quantity }}</span>
+												<button @click="Function.incrementQuantity(product)" class="rounded border-0 text-white btn-quantity">
+													+
+												</button>
+											</div>
+											<button @click="Function.deleteProduct(i)" class="btn btn-danger btn-sm mt-0">
+												<i class="fa-solid fa-trash"></i>
+											</button>
+										</div>
+									</template>
 								</div>
 							</div>
 						</div>
@@ -117,10 +128,10 @@ export default {
 						<div v-if="Store.recordCart.length > 0" class="cart-totals border-top border-2 border-dark pt-2">
 							<p class="mb-1">Totale prodotti: {{ Store.recordCart[0].products.length }}</p>
 							<p>
-								Totale da pagare: <b>€ {{ Store.recordCart[0].totalPrice }}</b>
+								Totale da pagare: <b>€ {{ Store.recordCart[0].totalPrice.toFixed(2) }}</b>
 							</p>
 						</div>
-						<button class="btn btn-success">Procedi all'ordine</button>
+						<button class="btn btn-success" :disabled="!Store.recordCart.length > 0">Procedi all'ordine</button>
 					</div>
 				</div>
 			</div>
@@ -129,6 +140,9 @@ export default {
 </template>
 
 <style scoped>
+.cart-list-detail {
+	height: 20rem;
+}
 .card-body img {
 	top: -5rem;
 	left: 50%;

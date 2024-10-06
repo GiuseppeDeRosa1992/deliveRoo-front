@@ -23,7 +23,6 @@ const myFunction = {
 	// },
 
 	addToCart(restaurant, product) {
-
 		// Controlla se l'utente sta cercando di aggiungere piatti da un ristorante diverso
 		// if (restaurantSlugInCart && restaurantSlugInCart !== this.$route.params.restaurant_slug) {
 		// 	if (this.cart.length > 0) {
@@ -35,39 +34,69 @@ const myFunction = {
 		// 	}
 		// }
 
-
 		let productExist = false;
 		if (Store.recordCart.length > 0) {
-
-			Store.recordCart[0].products.forEach(element => {
+			Store.recordCart[0].products.forEach((element) => {
 				if (element.id == product.id) {
 					productExist = true;
-					console.log("sei entrato in if");
 					element.quantity += 1;
-					Store.recordCart[0].totalPrice += parseFloat(element.price)
+					Store.recordCart[0].totalPrice += parseFloat(element.price);
 				}
 			});
 
 			if (!productExist) {
-				console.log("sei in else")
 				product.quantity = 1;
 				Store.recordCart[0].products.push(product);
-				Store.recordCart[0].totalPrice += parseFloat(product.price)
+				Store.recordCart[0].totalPrice += parseFloat(product.price);
 			}
 		} else {
-			Store.recordCart = [{
-				'restaurant': restaurant,
-				'products': [product],
-				'totalPrice': parseFloat(product.price)
-			}];
-			Store.recordCart[0].products[0].quantity = 1
+			Store.recordCart = [
+				{
+					restaurant: restaurant,
+					products: [product],
+					totalPrice: parseFloat(product.price),
+				},
+			];
+			Store.recordCart[0].products[0].quantity = 1;
 		}
-		localStorage.setItem('cart', JSON.stringify(Store.recordCart));
-		console.log(Store.recordCart)
+		localStorage.setItem("cart", JSON.stringify(Store.recordCart));
 	},
 
+	incrementQuantity(product) {
+		if (product.quantity < 30) {
+			product.quantity++;
+		}
+	},
+	decrementQuantity(product, indice) {
+		if (product.quantity === 1) {
+			Store.recordCart[0].products.splice(indice, 1);
+			if (Store.recordCart[0].products.length === 0) {
+				Store.recordCart = [];
+			}
+			let cart = JSON.parse(localStorage.getItem("cart"));
+			cart[0].products.splice(indice, 1);
+			localStorage.setItem("cart", JSON.stringify(cart));
+			if (cart[0].products.length === 0) {
+				localStorage.clear();
+			}
+		} else {
+			product.quantity--;
+		}
+	},
+	deleteProduct(indice) {
+		Store.recordCart[0].products.splice(indice, 1);
+		if (Store.recordCart[0].products.length === 0) {
+			Store.recordCart = [];
+		}
+		let cart = JSON.parse(localStorage.getItem("cart"));
+		cart[0].products.splice(indice, 1);
+		localStorage.setItem("cart", JSON.stringify(cart));
+		if (cart[0].products.length === 0) {
+			localStorage.clear();
+		}
+	},
 	totalProductPrice(priceProduct, quantityProduct) {
-		return priceProduct * quantityProduct
+		return priceProduct * quantityProduct;
 	},
 };
 
