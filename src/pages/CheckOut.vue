@@ -41,8 +41,8 @@ export default {
                 // Invia il nonce al backend per completare la transazione
                 axios.post('http://localhost:8000/api/braintree/checkout', {
                     payment_method_nonce: payload.nonce,
-                    // amount: Store.recordCart[0].totalPrice
-                    amount: 10,
+                    amount: Store.recordCart[0].totalPrice.toFixed(2)
+
                 }).then(response => {
                     if (response.data.success) {
                         alert('Pagamento completato con successo!');
@@ -67,10 +67,66 @@ export default {
 </script>
 
 <template>
-    <div>
-        <div id="dropin-container"></div>
-        <button @click="submitPayment">Paga</button>
+    <div class="container my-pt">
+        <div>
+            <h2 class="text-center">Nome ristorante: {{ Store.recordCart[0].restaurant.name }}</h2>
+            <p>riepilogo carrello:</p>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Immagine</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Quantità</th>
+                            <th scope="col">Totale</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        <template v-for="product in Store.recordCart[0].products">
+                            <tr class="">
+                                <td><img class="rounded-2" :src="product.image" :alt="product.name"></td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.quantity }}x</td>
+                                <td>€ {{ (product.price * product.quantity).toFixed(2) }}</td>
+                            </tr>
+                        </template>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>€ {{ Store.recordCart[0].totalPrice.toFixed(2) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+        <div class="w-25 mx-auto">
+            <div id="dropin-container"></div>
+            <div class="text-center mb-1">
+
+                <button class="my-bg btn p-2" @click="submitPayment">Paga</button>
+            </div>
+        </div>
+
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.my-bg {
+    background-color: rgba(250, 205, 173, 0.6);
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+.my-pt {
+    padding-top: 5rem;
+}
+
+.table-responsive img {
+    height: 3rem;
+
+}
+</style>
