@@ -110,13 +110,13 @@ export default {
 												<button
 													@click="Function.decrementQuantity(product, i)"
 													class="rounded rounded-circle border-0 fw-bold my-salmon">
-													<span>-</span>
+													<i class="fa-solid fa-minus fs-5 align-middle"></i>
 												</button>
 												<span>{{ product.quantity }}</span>
 												<button
 													@click="Function.incrementQuantity(product, i)"
 													class="rounded rounded-circle border-0 fw-bold my-salmon">
-													<span>+</span>
+													<i class="fa-solid fa-plus fs-5 align-middle"></i>
 												</button>
 											</div>
 											<button @click="Function.deleteProduct(i)" class="btn btn-danger btn-sm mt-0">
@@ -209,7 +209,6 @@ h4 {
 	background-color: #facdad;
 	height: 2rem;
 	width: 2rem;
-	padding: 1rem;
 }
 
 .my-salmon:hover {
