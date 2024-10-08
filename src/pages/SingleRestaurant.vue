@@ -134,7 +134,9 @@ export default {
 								Totale da pagare: <b>€ {{ Store.recordCart[0].totalPrice.toFixed(2) }}</b>
 							</p>
 						</div>
-						<button class="btn btn-success" :disabled="!Store.recordCart.length > 0">Procedi all'ordine</button>
+						<router-link :to="{ name: 'CheckOut' }">
+							<button class="btn btn-success" :disabled="!Store.recordCart.length > 0">Procedi all'ordine</button>
+						</router-link>
 					</div>
 				</div>
 			</div>
@@ -157,9 +159,9 @@ export default {
 							<p>Svuota il carrello per cambiare ristorante o completa l'ordine</p>
 						</div>
 						<div class="modal-footer d-flex flex-column align-items-center">
-							<a :href="'http://localhost:5174/restaurant/' + Store.recordCart[0].restaurant.slug + '/menu'">
+							<router-link class="text-decoration-none" :to="{ name: 'CheckOut' }">
 								<button type=" button" class="btn btn-primary" data-bs-dismiss="modal">Completa l'ordine</button>
-							</a>
+							</router-link>
 							<button type="button" class="btn btn-secondary" @click="Function.deleteCart()" data-bs-dismiss="modal">
 								Svuota il carrello
 							</button>

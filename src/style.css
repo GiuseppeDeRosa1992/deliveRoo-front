@@ -1,8 +1,12 @@
 ::-webkit-scrollbar {
-    width: 7px;
+	width: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #facdad;
-    border-radius: 10px;
+	background-color: #facdad;
+	border-radius: 10px;
+}
+
+.braintree-upper-container {
+	margin-top: -30px;
 }

@@ -26,12 +26,21 @@ export default {
 				</router-link>
 			</div>
 			<div class="right-side h-100 text-end align-content-center">
-				<div class="carrello align-content-center position-relative">
-					<i class="fa-solid fa-cart-shopping" style="color: #ffffff"></i>
-					<span v-if="Store.recordCart.length > 0" class="text-bg-danger rounded rounded-circle my_position">{{
-						Store.recordCart[0].products.length
-					}}</span>
-				</div>
+				<template v-if="Store.recordCart.length > 0">
+					<div class="carrello align-content-center position-relative">
+						<router-link class="text-decoration-none p-0" :to="{ name: 'CheckOut' }">
+							<i class="fa-solid fa-cart-shopping" style="color: #ffffff"></i>
+							<span v-if="Store.recordCart.length > 0" class="text-bg-danger rounded rounded-circle my_position">{{
+								Store.recordCart[0].products.length
+							}}</span>
+						</router-link>
+					</div>
+				</template>
+				<template v-else>
+					<div class="carrello align-content-center position-relative">
+						<i class="fa-solid fa-cart-shopping" style="color: #ffffff"></i>
+					</div>
+				</template>
 			</div>
 		</div>
 	</header>

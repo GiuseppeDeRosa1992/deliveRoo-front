@@ -2,6 +2,7 @@
 import Store from "../data/store.js";
 import Service from "../helpers/service.js";
 import Function from "../helpers/function.js";
+import { RouterLink } from "vue-router";
 
 export default {
 	name: "CheckOut",
@@ -24,9 +25,16 @@ export default {
 </script>
 
 <template>
-	<div class="container my-pt">
+	<div v-if="Store.recordCart.length > 0" class="container my-pt">
 		<div class="py-3 w-75 mx-auto">
-			<h2 class="text-center">Nome ristorante: {{ Store.recordCart[0].restaurant.name }}</h2>
+			<div class="row justify-content-between align-items-center">
+				<h2 class="col-auto">Completa ordine da: {{ Store.recordCart[0].restaurant.name }}</h2>
+				<div class="col-auto text-end">
+					<router-link class="text-dark" :to="{ name: 'SingleRestaurant', params: { slug: Store.recordCart[0].restaurant.slug } }">
+						<button class="my-bg btn p-2">Torna al Ristorante</button>
+					</router-link>
+				</div>
+			</div>
 			<div class="table-responsive">
 				<table class="table">
 					<thead>
@@ -47,41 +55,36 @@ export default {
 							</tr>
 						</template>
 						<tr>
+							<td class="fw-bold">Totale ordine:</td>
 							<td></td>
 							<td></td>
-							<td class="fw-bold text-center">Totale ordine:</td>
 							<td class="fw-bold text-end">€ {{ Store.recordCart[0].totalPrice.toFixed(2) }}</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<div class="w-75 mx-auto py-3">
-			<div class="row justify-content-between">
-				<div class="mb-3 col-6">
-					<label for="name_client" class="form-label">Nome</label>
-					<input type="text" name="name_client" id="name_client" class="form-control" />
+		<h2 class="text-center mb-3 w-75 mx-auto">Inserisci i tuoi dati, paga e completa l'ordine</h2>
+		<div class="row w-75 m-0 mx-auto">
+			<div class="col-12 col-lg-6 p-0 pe-1">
+				<div class="mb-3">
+					<input placeholder="Nome" type="text" name="name_client" id="name_client" class="form-control" />
 				</div>
-				<div class="mb-3 col-6">
-					<label for="email_client" class="form-label">Email</label>
-					<input type="email" name="email_client" id="email_client" class="form-control" />
+				<div class="mb-3">
+					<input placeholder="Email" type="email" name="email_client" id="email_client" class="form-control" />
 				</div>
-			</div>
-			<div class="row justify-content-between">
-				<div class="mb-3 col-6">
-					<label for="number_phone" class="form-label">Numero di telefono</label>
-					<input type="text" name="number_phone" id="number_phone" class="form-control" />
+				<div class="mb-3">
+					<input placeholder="Numero di telefono" type="text" name="number_phone" id="number_phone" class="form-control" />
 				</div>
-				<div class="mb-3 col-6">
-					<label for="address_client" class="form-label">Indirizzo</label>
-					<input type="text" name="address_client" id="address_client" class="form-control" />
+				<div class="mb-3">
+					<input placeholder="Indirizzo" type="text" name="address_client" id="address_client" class="form-control" />
 				</div>
 			</div>
-		</div>
-		<div class="w-75 mx-auto py-3">
-			<div id="dropin-container"></div>
-			<div class="text-center mb-1">
-				<button class="my-bg btn p-2" @click="Function.submitPayment">Paga e invia l'ordine</button>
+			<div class="col-12 col-lg-6 p-0 ps-1">
+				<div id="dropin-container" class="text-center"></div>
+				<div class="text-center mb-1">
+					<button class="my-bg btn p-2" @click="Function.submitPayment">Paga e invia l'ordine</button>
+				</div>
 			</div>
 		</div>
 	</div>
