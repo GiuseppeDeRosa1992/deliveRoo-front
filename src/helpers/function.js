@@ -66,12 +66,13 @@ const myFunction = {
 		localStorage.clear();
 	},
 
-	incrementQuantity(product) {
+	incrementQuantity(product, indice) {
 		if (product.quantity < 30) {
-			product.quantity++;
 			Store.recordCart[0].totalPrice += parseFloat(product.price);
+			Store.recordCart[0].products[indice].quantity++;
 			let cart = JSON.parse(localStorage.getItem("cart"));
 			cart[0].totalPrice += parseFloat(product.price);
+			cart[0].products[indice].quantity++;
 			localStorage.setItem("cart", JSON.stringify(cart));
 		}
 	},
@@ -90,10 +91,11 @@ const myFunction = {
 				localStorage.clear();
 			}
 		} else {
-			product.quantity--;
 			Store.recordCart[0].totalPrice -= parseFloat(product.price);
+			Store.recordCart[0].products[indice].quantity--;
 			let cart = JSON.parse(localStorage.getItem("cart"));
 			cart[0].totalPrice -= parseFloat(product.price);
+			cart[0].products[indice].quantity--;
 			localStorage.setItem("cart", JSON.stringify(cart));
 		}
 	},
