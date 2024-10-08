@@ -1,16 +1,19 @@
 <script>
 import { RouterLink } from "vue-router";
+import Store from "../data/store.js";
 export default {
 	name: "HeaderApp",
 
 	components: {},
 
 	data() {
-		return {};
+		return {
+			Store,
+		};
 	},
 	methods: {},
 
-	mounted() { },
+	mounted() {},
 };
 </script>
 
@@ -23,8 +26,11 @@ export default {
 				</router-link>
 			</div>
 			<div class="right-side h-100 text-end align-content-center">
-				<div class="carrello align-content-center">
+				<div class="carrello align-content-center position-relative">
 					<i class="fa-solid fa-cart-shopping" style="color: #ffffff"></i>
+					<span v-if="Store.recordCart.length > 0" class="text-bg-danger rounded rounded-circle my_position">{{
+						Store.recordCart[0].products.length
+					}}</span>
 				</div>
 			</div>
 		</div>
@@ -35,23 +41,28 @@ export default {
 header {
 	height: 5rem;
 	background-color: rgba(250, 205, 173, 0.9);
-
 }
 
-.left-side>a>img {
+.left-side > a > img {
 	filter: brightness(1.5) drop-shadow(0px 5px 4px black);
 	height: 100%;
 	padding: 0.2rem 0;
 }
 
-.right-side>.carrello {
+.right-side > .carrello {
 	height: 2rem;
 	width: 2rem;
 	text-align: center;
+	background-color: orange;
 	border-radius: 50%;
 }
 
-.right-side>.carrello:hover {
-	background-color: orange;
+.my_position {
+	position: absolute;
+	top: -8px;
+	right: -10px;
+	font-size: 12px;
+	height: 1.2rem;
+	aspect-ratio: 1;
 }
 </style>
