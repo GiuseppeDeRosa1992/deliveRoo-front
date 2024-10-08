@@ -9,7 +9,8 @@ const myData = reactive({
 	categoriesSelected: [],
 	listRestaurants: null,
 	singleRestaurant: null,
-	recordCart: JSON.parse(localStorage.getItem('cart')) || [],
+	recordCart: JSON.parse(localStorage.getItem("cart")) || [],
+	dropinInstance: null,
 });
 
 export default myData;

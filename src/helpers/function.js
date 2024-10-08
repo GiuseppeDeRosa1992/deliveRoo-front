@@ -1,5 +1,6 @@
 import Store from "../data/store.js";
 import Helpers from "./service.js";
+import dropin from "braintree-web-drop-in";
 
 const myFunction = {
 	toggleCategory(categoryId) {
@@ -113,6 +114,33 @@ const myFunction = {
 	},
 	totalProductPrice(priceProduct, quantityProduct) {
 		return priceProduct * quantityProduct;
+	},
+	initializeDropIn(token) {
+		dropin.create(
+			{
+				authorization: token,
+				container: "#dropin-container",
+				locale: "it_IT",
+			},
+			(err, instance) => {
+				if (err) {
+					console.error(err);
+					return;
+				}
+				Store.dropinInstance = instance;
+			}
+		);
+	},
+
+	submitPayment() {
+		Store.dropinInstance.requestPaymentMethod((err, payload) => {
+			if (err) {
+				console.error(err);
+				return;
+			}
+			// Invia il nonce al backend per completare la transazione
+			Helpers.braintreePayment(payload);
+		});
 	},
 };
 
