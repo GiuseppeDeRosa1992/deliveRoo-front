@@ -13,12 +13,12 @@ export default {
 	},
 	methods: {},
 
-	mounted() {},
+	mounted() { },
 };
 </script>
 
 <template>
-	<header class="py-3 position-fixed w-100 z-1">
+	<header class="py-3 px-3 position-fixed w-100">
 		<div class="container p-0 h-100 d-flex justify-content-between">
 			<div class="left-side h-100">
 				<router-link :to="'/'">
@@ -30,9 +30,10 @@ export default {
 					<div class="carrello align-content-center position-relative">
 						<router-link class="text-decoration-none p-0" :to="{ name: 'CheckOut' }">
 							<i class="fa-solid fa-cart-shopping" style="color: #ffffff"></i>
-							<span v-if="Store.recordCart.length > 0" class="text-bg-danger rounded rounded-circle my_position">{{
-								Store.recordCart[0].products.length
-							}}</span>
+							<span v-if="Store.recordCart.length > 0"
+								class="text-bg-danger rounded rounded-circle my_position">{{
+									Store.recordCart[0].products.length
+								}}</span>
 						</router-link>
 					</div>
 				</template>
@@ -50,15 +51,16 @@ export default {
 header {
 	height: 5rem;
 	background-color: rgba(250, 205, 173, 0.9);
+	z-index: 999;
 }
 
-.left-side > a > img {
+.left-side>a>img {
 	filter: brightness(1.5) drop-shadow(0px 5px 4px black);
 	height: 100%;
 	padding: 0.2rem 0;
 }
 
-.right-side > .carrello {
+.right-side>.carrello {
 	height: 2rem;
 	width: 2rem;
 	text-align: center;

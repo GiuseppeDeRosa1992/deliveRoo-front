@@ -18,6 +18,7 @@ const myData = reactive({
 	number_phone: "",
 	address_client: "",
 	order: null,
+	loading: false,
 });
 
 export default myData;

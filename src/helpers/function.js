@@ -133,6 +133,7 @@ const myFunction = {
 	},
 
 	submitPayment() {
+		Store.loading = true;
 		Store.dropinInstance.requestPaymentMethod((err, payload) => {
 			if (err) {
 				console.error(err);

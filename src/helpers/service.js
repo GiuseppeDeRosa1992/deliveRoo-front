@@ -48,7 +48,6 @@ const myHelpers = {
 			})
 			.then((response) => {
 				if (response.data.success) {
-					alert("Pagamento completato con successo!");
 					this.sendOrder();
 				} else {
 					alert("Errore nel pagamento: " + response.data.message);
@@ -90,6 +89,11 @@ const myHelpers = {
 		} catch (error) {
 			console.log("errore", error);
 		}
+		Store.loading = false;
+		Store.name_client = "";
+		Store.email_client = "";
+		Store.number_phone = "";
+		Store.address_client = "";
 	},
 };
 
