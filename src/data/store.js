@@ -11,6 +11,13 @@ const myData = reactive({
 	singleRestaurant: null,
 	recordCart: JSON.parse(localStorage.getItem("cart")) || [],
 	dropinInstance: null,
+
+	// order
+	name_client: "",
+	email_client: "",
+	number_phone: "",
+	address_client: "",
+	order: null,
 });
 
 export default myData;
