@@ -23,7 +23,7 @@ const myHelpers = {
 		Store.loader = true
 		axios.get(Store.baseUrlApi + "restaurants").then((response) => {
 			Store.listRestaurants = response.data.restaurants;
-			//Store.loader = false
+			Store.loader = false
 		});
 	},
 
@@ -31,7 +31,7 @@ const myHelpers = {
 		Store.loader = true
 		axios.get(`http://localhost:8000/api/restaurant/${params}`).then((response) => {
 			Store.singleRestaurant = response.data.restaurant;
-			//Store.loader = false
+			Store.loader = false
 
 		});
 	},
