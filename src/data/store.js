@@ -19,6 +19,7 @@ const myData = reactive({
 	address_client: "",
 	order: null,
 	loading: false,
+	loader: true,
 });
 
 export default myData;

@@ -20,14 +20,19 @@ const myHelpers = {
 	},
 
 	getRestaurants() {
+		Store.loader = true
 		axios.get(Store.baseUrlApi + "restaurants").then((response) => {
 			Store.listRestaurants = response.data.restaurants;
+			//Store.loader = false
 		});
 	},
 
 	getMenuRestaurant(params) {
+		Store.loader = true
 		axios.get(`http://localhost:8000/api/restaurant/${params}`).then((response) => {
 			Store.singleRestaurant = response.data.restaurant;
+			//Store.loader = false
+
 		});
 	},
 	getToken() {
