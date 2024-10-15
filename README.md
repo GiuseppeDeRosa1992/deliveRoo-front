@@ -4,7 +4,7 @@
 ## Descrizione del progetto
 
 DeliveRoo è un'applicazione che semplifica la gestione delle consegne di cibo da ristoranti. Questo progetto è diviso in due parti principali: **Frontend** e **Backend**, che lavorano insieme per fornire un servizio completo e performante.
-[Qui trovi il link della repository Back-end-end] (https://github.com/GiuseppeDeRosa1992/deliveRoo-back)
+[Qui trovi il link della repository Back-end-end](https://github.com/GiuseppeDeRosa1992/deliveRoo-back)
 Ricorda che le due applicazioni lavorano insieme e quindi sarà necessario installare entrambe le repository.
 
 ## Tecnologie utilizzate
@@ -29,19 +29,19 @@ Prima di iniziare, assicurati di avere installato i seguenti strumenti:
 Segui questi passaggi per configurare l'ambiente di sviluppo localmente:
 
 1. Clona il repository:
-   \`\`\`bash
+```bash
    git clone https://github.com/GiuseppeDeRosa1992/deliveRoo-front .
-   \`\`\`
+```
 
 2. Installa le dipendenze del frontend e aggiornale se necessario:
-   \`\`\`bash
+```bash
    npm install
    npm update
-   \`\`\`
+```
 
 ## Avvia il Server
 
 1. Esegui da terminale il seguente comando per avviare il server front-end:
-   \`\`\`bash
+```bash
    npm run dev
-   \`\`\`
+```
