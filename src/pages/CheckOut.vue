@@ -251,4 +251,9 @@ table img {
 	height: 3rem;
 	color: #facdad;
 }
+
+.form-control:focus {
+	border-color: #facdad !important;
+	box-shadow: 0 0 0 0.25rem #facdad !important;
+}
 </style>
