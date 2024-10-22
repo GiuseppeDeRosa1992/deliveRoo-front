@@ -30,8 +30,7 @@ export default {
 			<div class="row justify-content-between align-items-center">
 				<h3 class="col-auto">Completa ordine da: {{ Store.recordCart[0].restaurant.name }}</h3>
 				<div class="col-auto text-end">
-					<router-link class="text-dark"
-						:to="{ name: 'SingleRestaurant', params: { slug: Store.recordCart[0].restaurant.slug } }">
+					<router-link class="text-dark" :to="{ name: 'SingleRestaurant', params: { slug: Store.recordCart[0].restaurant.slug } }">
 						<button class="my-bg btn p-2">Torna al Ristorante</button>
 					</router-link>
 				</div>
@@ -50,8 +49,10 @@ export default {
 						<template v-for="product in Store.recordCart[0].products">
 							<tr>
 								<td class="d-none d-md-table-cell">
-									<img v-if="!product.image.startsWith('http')"
-										:src="Store.baseUrl + 'storage/' + product.image" class="rounded-2"
+									<img
+										v-if="!product.image.startsWith('http')"
+										:src="Store.baseUrl + 'storage/' + product.image"
+										class="rounded-2"
 										:alt="product.name" />
 									<img v-else="" :src="product.image" class="rounded-2" :alt="product.name" />
 								</td>
@@ -77,22 +78,57 @@ export default {
 			<div class="row w-75 m-0 mx-auto">
 				<div class="col-12 col-lg-6 p-0 pe-1">
 					<div class="mb-3">
-						<input placeholder="Nome" type="text" v-model="Store.name_client" name="name_client"
-							id="name_client" class="form-control" required minlength="2" maxlength="30" />
+						<input
+							placeholder="Nome"
+							type="text"
+							v-model="Store.name_client"
+							name="name_client"
+							id="name_client"
+							class="form-control"
+							required
+							minlength="2"
+							maxlength="30"
+							autocomplete="off" />
 					</div>
 					<div class="mb-3">
-						<input placeholder="Email" type="email" v-model="Store.email_client" name="email_client"
-							id="email_client" class="form-control" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" />
+						<input
+							placeholder="Email"
+							type="email"
+							v-model="Store.email_client"
+							name="email_client"
+							id="email_client"
+							class="form-control"
+							required
+							pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+							autocomplete="off" />
 					</div>
 					<div class="mb-3">
-						<input placeholder="Numero di telefono" type="text" v-model="Store.number_phone"
-							name="number_phone" id="number_phone" class="form-control" required minlength="9"
-							maxlength="10" pattern="\d{9,10}" />
+						<input
+							placeholder="Numero di telefono"
+							type="text"
+							v-model="Store.number_phone"
+							name="number_phone"
+							id="number_phone"
+							class="form-control"
+							required
+							minlength="9"
+							maxlength="10"
+							pattern="\d{9,10}"
+							autocomplete="off" />
 					</div>
 					<div class="mb-3">
-						<input placeholder="Indirizzo" type="text" v-model="Store.address_client" name="address_client"
-							id="address_client" class="form-control" required minlength="5" maxlength="255"
-							pattern=".{5,255}" />
+						<input
+							placeholder="Indirizzo"
+							type="text"
+							v-model="Store.address_client"
+							name="address_client"
+							id="address_client"
+							class="form-control"
+							required
+							minlength="5"
+							maxlength="255"
+							pattern=".{5,255}"
+							autocomplete="off" />
 					</div>
 				</div>
 				<div class="col-12 col-lg-6 p-0 ps-1">
@@ -115,12 +151,13 @@ export default {
 		<h3 class="text-center m-0 my-3">Grazie {{ Store.order[1].name_client }} per aver ordinato da Deliveroo!</h3>
 		<div class="row justify-content-center">
 			<div class="col-8 col-md-2">
-				<img v-if="!Store.order[0].restaurant.image.startsWith('http')"
-					:src="Store.baseUrl + 'storage/' + Store.order[0].restaurant.image" class="rounded img-fluid"
+				<img
+					v-if="!Store.order[0].restaurant.image.startsWith('http')"
+					:src="Store.baseUrl + 'storage/' + Store.order[0].restaurant.image"
+					class="rounded img-fluid"
 					:alt="Store.order[0].restaurant.name" />
 
-				<img v-else="" :src="Store.order[0].restaurant.image" class="rounded img-fluid"
-					:alt="Store.order[0].restaurant.name" />
+				<img v-else="" :src="Store.order[0].restaurant.image" class="rounded img-fluid" :alt="Store.order[0].restaurant.name" />
 			</div>
 			<div class="col-auto">
 				<h5>Hai ordinato da {{ Store.order[0].restaurant.name }}</h5>
@@ -156,11 +193,12 @@ export default {
 							<template v-for="product in Store.order[0].products">
 								<tr>
 									<td class="d-none d-md-table-cell">
-										<img v-if="!product.image.startsWith('http')"
-											:src="Store.baseUrl + 'storage/' + product.image" class="rounded"
+										<img
+											v-if="!product.image.startsWith('http')"
+											:src="Store.baseUrl + 'storage/' + product.image"
+											class="rounded"
 											:alt="product.name" />
-										<img v-else="" :src="product.image" class="rounded img-fluid"
-											:alt="product.name" />
+										<img v-else="" :src="product.image" class="rounded img-fluid" :alt="product.name" />
 									</td>
 									<td>{{ product.name }}</td>
 									<td class="text-center">x{{ product.quantity }}</td>
@@ -180,9 +218,7 @@ export default {
 				</div>
 			</div>
 			<div class="col-12 text-center">
-				<em>A breve riceverai nella tua email: {{ Store.order[1].email_client }} il riepilogo dell'ordine che
-					hai
-					effettuato</em>
+				<em>A breve riceverai nella tua email: {{ Store.order[1].email_client }} il riepilogo dell'ordine che hai effettuato</em>
 			</div>
 			<div class="col-12 text-center mt-2">
 				<router-link to="/" class="my-bg btn p-2"> Torna alla Home </router-link>
